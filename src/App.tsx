@@ -15,6 +15,10 @@ function App() {
     country: '', city: '', street: '',
   })
 
+  useEffect(() => {
+    console.log(formState)
+  }, [formState]);
+
   const setCountry = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setFormState(prev => ({ ...prev, country: event.target.value }))
   }, [])
@@ -28,7 +32,6 @@ function App() {
   }, [])
 
   const onSubmit = useCallback(() => {
-    console.log(formState)
     telegram.sendData(JSON.stringify(formState))
     telegram.close()
   }, [formState, telegram])
