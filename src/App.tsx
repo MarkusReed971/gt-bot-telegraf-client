@@ -34,7 +34,7 @@ function App() {
   const onSubmit = useCallback(() => {
     console.log(formState)
     telegram.sendData(JSON.stringify(formState))
-  }, [formState.country, formState.city, formState.street, telegram])
+  }, [formState, telegram])
 
   useEffect(() => {
     telegram.ready()
@@ -43,6 +43,10 @@ function App() {
 
   useEffect(() => {
     telegram.MainButton.onClick(onSubmit)
+
+    return () => {
+      telegram.MainButton.offClick(onSubmit)
+    }
   }, [onSubmit, telegram]);
 
   useEffect(() => {
