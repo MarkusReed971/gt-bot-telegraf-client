@@ -30,10 +30,14 @@ function App() {
   const onSubmit = useCallback(() => {
     telegram.sendData(JSON.stringify(formState))
     telegram.close()
-  }, [JSON.stringify(formState), telegram])
+  }, [formState, telegram])
 
   useEffect(() => {
     telegram.ready()
+    telegram.MainButton.setText('Отправить')
+  }, [telegram]);
+
+  useEffect(() => {
     telegram.MainButton.onClick(onSubmit)
   }, [onSubmit, telegram]);
 
