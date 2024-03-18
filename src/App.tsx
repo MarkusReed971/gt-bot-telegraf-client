@@ -1,6 +1,6 @@
-import {ChangeEvent, useCallback, useEffect, useState} from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import './App.css'
-import {useTelegram} from "./hooks/useTelegram.ts";
+import { useTelegram } from "./hooks/useTelegram.ts";
 
 export interface FormState {
   country: string
@@ -34,8 +34,7 @@ function App() {
   const onSubmit = useCallback(() => {
     console.log(formState)
     telegram.sendData(JSON.stringify(formState))
-    // telegram.close()
-  }, [formState, telegram])
+  }, [formState.country, formState.city, formState.street, telegram])
 
   useEffect(() => {
     telegram.ready()
