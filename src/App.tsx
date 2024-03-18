@@ -28,6 +28,7 @@ function App() {
   }, [])
 
   const onSubmit = useCallback(() => {
+    console.log(formState)
     telegram.sendData(JSON.stringify(formState))
     telegram.close()
   }, [formState, telegram])
