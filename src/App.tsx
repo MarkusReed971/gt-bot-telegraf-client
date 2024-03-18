@@ -30,12 +30,12 @@ function App() {
   const onSubmit = useCallback(() => {
     telegram.sendData(JSON.stringify(formState))
     telegram.close()
-  }, [])
+  }, [JSON.stringify(formState), telegram])
 
   useEffect(() => {
     telegram.ready()
     telegram.MainButton.onClick(onSubmit)
-  }, [onSubmit]);
+  }, [onSubmit, telegram]);
 
   useEffect(() => {
     if (formState.country && formState.city && formState.street) {
@@ -43,7 +43,7 @@ function App() {
     } else {
       telegram.MainButton.hide()
     }
-  }, [formState.country, formState.city, formState.street]);
+  }, [formState.country, formState.city, formState.street, telegram.MainButton]);
 
   return (
     <div>
