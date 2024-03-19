@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div>
-      <form>
+      <form className='form'>
         <input type="text" placeholder='Страна' value={formState.country} onChange={setCountry}/>
         <input type="text" placeholder='Город' value={formState.city} onChange={setCity}/>
         <input type="text" placeholder='Улица' value={formState.street} onChange={setStreet}/>

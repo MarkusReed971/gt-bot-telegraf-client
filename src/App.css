@@ -3,3 +3,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+
+  input {
+    padding: 12px;
+    border-radius: 4px;
+  }
+}
